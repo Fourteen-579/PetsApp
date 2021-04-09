@@ -3,6 +3,7 @@ package com.fourteen.controller;
 import com.fourteen.pojo.User;
 import com.fourteen.service.UserService;
 import com.fourteen.tools.CreateId;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,7 +13,7 @@ import javax.annotation.Resource;
 @RequestMapping("/user")
 public class UserController {
 
-    @Resource
+    @Autowired
     UserService userService;
 
     @RequestMapping("/add")
