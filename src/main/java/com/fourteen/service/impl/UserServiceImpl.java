@@ -25,8 +25,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> queryAll() {
-        return userMapper.queryAll();
+    public String queryAll() {
+        List<User> list = userMapper.queryAll();
+        return ReturnRequirdResult.resultToJson(list,list.size());
     }
 
     @Override
@@ -37,6 +38,7 @@ public class UserServiceImpl implements UserService {
             page = 0;
         }
         List<User> list = userMapper.queryByLimit(page, limit);
-        return ReturnRequirdResult.resultToJson(list,list.size());
+        int countUser = userMapper.countUser();
+        return ReturnRequirdResult.resultToJson(list,countUser);
     }
 }

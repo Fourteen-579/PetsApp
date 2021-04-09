@@ -23,7 +23,7 @@ public class Test {
         ApplicationContext a = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserMapper bean = a.getBean(UserMapper.class);
 
-        for (int i=0;i<10;i++){
+        for (int i=1;i<30;i++){
             User user = new User(CreateId.getUUID(),"name"+i,18+i,"男","imgUrl"+i,"location"+i);
             bean.addUser(user);
         }

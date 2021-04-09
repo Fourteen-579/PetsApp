@@ -8,7 +8,7 @@ import java.util.List;
 public interface UserService {
     int addUser(User user);
 
-    List<User> queryAll();
+    String queryAll();
 
     String queryByLimit(int page,int limit);
 }

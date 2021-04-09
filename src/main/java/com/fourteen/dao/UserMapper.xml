@@ -17,7 +17,7 @@
         select * from user limit #{page},#{limit}
     </select>
 
-    <select id="countUser">
+    <select id="countUser" resultType="_int">
         select count(*) from user
     </select>
 </mapper>

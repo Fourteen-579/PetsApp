@@ -33,4 +33,10 @@ public class UserController {
         return userService.queryByLimit(page, limit);
     }
 
+    @RequestMapping("/queryAll")
+    @ResponseBody
+    public String queryAll() {
+        return userService.queryAll();
+    }
+
 }
