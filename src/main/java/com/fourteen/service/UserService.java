@@ -9,4 +9,6 @@ public interface UserService {
     int addUser(User user);
 
     List<User> queryAll();
+
+    String queryByLimit(int page,int limit);
 }

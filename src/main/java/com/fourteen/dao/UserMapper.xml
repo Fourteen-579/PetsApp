@@ -12,4 +12,12 @@
     <select id="queryAll" resultType="user">
         select * from user;
     </select>
+
+    <select id="queryByLimit" resultType="user">
+        select * from user limit #{page},#{limit}
+    </select>
+
+    <select id="countUser">
+        select count(*) from user
+    </select>
 </mapper>

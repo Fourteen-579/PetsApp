@@ -9,6 +9,7 @@ import com.fourteen.tools.CreateId;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Test {
@@ -21,13 +22,14 @@ public class Test {
     public void testAddUser(){
         ApplicationContext a = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserMapper bean = a.getBean(UserMapper.class);
-        User user = new User(CreateId.getUUID(),"name",10,"男","111","111");
-        bean.addUser(user);
 
-        List<User> list = bean.queryAll();
-        for (User user1 : list) {
-            System.out.println(user1);
+        for (int i=0;i<10;i++){
+            User user = new User(CreateId.getUUID(),"name"+i,18+i,"男","imgUrl"+i,"location"+i);
+            bean.addUser(user);
         }
+
+
+
     }
 
     @org.junit.Test
@@ -58,6 +60,16 @@ public class Test {
         UserController userController = a.getBean("userController", UserController.class);
         String s = userController.addUser();
         System.out.println(s);
+    }
+
+    @org.junit.Test
+    public void testQueryLimitService(){
+        ApplicationContext a = new ClassPathXmlApplicationContext("applicationContext.xml");
+        UserService userServiceImpl = a.getBean("userServiceImpl", UserService.class);
+//        List<User> list = userServiceImpl.queryByLimit(3, 5);
+//        for (User user : list) {
+//            System.out.println(user);
+//        }
     }
 
 }

@@ -38,11 +38,9 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">menu group 1</a>
+                    <a class="" href="javascript:;">User</a>
                     <dl class="layui-nav-child">
                         <dd><a href="${pageContext.request.contextPath}/userList" target="ifr">UserList</a></dd>
-                        <dd><a href="javascript:;">menu item 1-2</a></dd>
-                        <dd><a href="javascript:;">menu item 1-3</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -61,7 +59,7 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            <iframe name="ifr" src="" width="100%" height="100%"></iframe>
+            <iframe name="ifr" frameborder="0" id="demoAdmin" style="width: 100%; height: 300px; border-radius: 2px;"></iframe>
         </div>
     </div>
 
