@@ -6,18 +6,41 @@
 <mapper namespace="com.fourteen.dao.UserMapper">
     <insert id="addUser" parameterType="user">
         insert into user(id, name, age, sex, img_url, location) VALUE
-        (#{id},#{name},#{age},#{sex},#{imgUrl},#{location});
+            (#{id}, #{name}, #{age}, #{sex}, #{imgUrl}, #{location});
     </insert>
 
     <select id="queryAll" resultType="user">
-        select * from user;
+        select *
+        from user;
     </select>
 
     <select id="queryByLimit" resultType="user">
-        select * from user limit #{page},#{limit}
+        select *
+        from user
+        limit #{page},#{limit}
     </select>
 
     <select id="countUser" resultType="_int">
-        select count(*) from user
+        select count(*)
+        from user
     </select>
+
+    <update id="UpdateUser" parameterType="map">
+        UPDATE user
+        <set>
+            <if test="name!=null">
+                name = #{name},
+            </if>
+            <if test="age!=null">
+                age = #{age},
+            </if>
+            <if test="sex!=null">
+                sex = #{sex},
+            </if>
+            <if test="location!=null">
+                location = #{location},
+            </if>
+        </set>
+        where id= #{id}
+    </update>
 </mapper>
