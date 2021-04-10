@@ -17,10 +17,13 @@ public interface UserMapper {
     //查询总数据量
     int countUser();
 
-//    更新用户数据
+    //    更新用户数据
     int UpdateUser(Map map);
 
-//    删除用户根据id
-    int deleteUserById(@Param("id")String id);
+    //    删除用户根据id
+    int deleteUserById(@Param("id") String id);
+
+    //    增加用户
+    int addUser(Map map);
 
 }

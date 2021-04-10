@@ -40,7 +40,10 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">User</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="${pageContext.request.contextPath}/userList" target="ifr">UserList</a></dd>
+                        <dd><a href="${pageContext.request.contextPath}/admin/userList" target="ifr">UserList</a></dd>
+                    </dl>
+                    <dl class="layui-nav-child">
+                        <dd><a href="${pageContext.request.contextPath}/admin/addUser" target="ifr">addUser</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">

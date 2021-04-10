@@ -4,10 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.fourteen.dao.UserMapper">
-    <insert id="addUser" parameterType="user">
-        insert into user(id, name, age, sex, img_url, location,pwd,phone) VALUE
-            (#{id}, #{name}, #{age}, #{sex}, #{imgUrl}, #{location},#{pwd},#{phone});
-    </insert>
 
     <select id="queryAll" resultType="user">
         select *
@@ -54,4 +50,9 @@
         delete from user
         where id = #{id}
     </delete>
+
+    <insert id="addUser" parameterType="map">
+        insert into user(id, name, age, sex, img_url, location, pwd, phone) VALUE
+        (#{id},#{name},#{age},#{sex},#{imgUrl},#{location},#{pwd},#{phone})
+    </insert>
 </mapper>

@@ -1,14 +1,10 @@
 package com.fourteen.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.fourteen.pojo.User;
 import com.fourteen.service.UserService;
-import com.fourteen.tools.CreateId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 
 @RestController
@@ -39,6 +35,13 @@ public class UserController {
         HashMap<String,String> hashMap = JSON.parseObject(data,HashMap.class);
 
         return userService.deleteUserById(hashMap);
+    }
+
+    @PostMapping("/addUser")
+
+    public String addUser(@RequestBody String data){
+        HashMap<String,String> map = JSON.parseObject(data,HashMap.class);
+        return userService.addUser(map);
     }
 
 }
