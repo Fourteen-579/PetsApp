@@ -14,7 +14,7 @@
     <title>主界面</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/layui/2.6.4/css/layui.css">
 </head>
-<body>
+<body  style="overflow:hidden;">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
         <div class="layui-logo">PetsApp管理系统</div>
@@ -62,7 +62,7 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            <iframe name="ifr" frameborder="0" id="demoAdmin" style="width: 100%; height: 500px; border-radius: 2px;"></iframe>
+            <iframe name="ifr" frameborder="0" id="demoAdmin" style="width: 100%; height: 1000px; border-radius: 2px;"></iframe>
         </div>
     </div>
 

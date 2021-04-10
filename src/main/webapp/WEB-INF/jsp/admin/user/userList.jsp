@@ -52,12 +52,12 @@
             ,url:'${pageContext.request.contextPath}/user/queryByLimit'
             ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
             ,cols: [[
-                {field:'id', width:300, title: 'ID', sort: true}
-                ,{field:'name', width:100, title: '用户名',edit: 'text'}
+                {field:'id', width:180, title: 'ID', sort: true}
+                ,{field:'name', width:180, title: '用户名',edit: 'text'}
                 ,{field:'age', width:80, title: '年龄', sort: true,edit: 'text'}
                 ,{field:'sex', width:80, title: '性别',edit: 'text',sort: true}
                 ,{field:'pwd', width:80, title: '密码', edit: 'text'}
-                ,{field:'phone', width:80, title: '手机号',edit: 'text'}
+                ,{field:'phone', width:180, title: '手机号',edit: 'text'}
                 ,{field:'location', title: '所在地', width: 100, minWidth: 100,edit: 'text'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
                 ,{field:'imgUrl', title: '照片',
                     templet: function (res) {
