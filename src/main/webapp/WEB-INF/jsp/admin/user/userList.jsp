@@ -26,6 +26,23 @@
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 <script>
+
+    var tipsImgVal=null;
+
+    function showImgTips(url){
+        layui.use('layer',function () {
+            tipsImgVal = layer.tips('<img src="'+url+'" width="200px"/>', '#userImg', {
+                tips: 4,
+                anim: 5,
+                tips: [4, 'rgba(255,255,255,0)']
+            });
+        })
+    }
+
+    function closeImgTips(){
+        layer.close(tipsImgVal);
+    }
+
     layui.use('table', function(){
         var table = layui.table,
             $ = layui.jquery;
@@ -42,7 +59,10 @@
                 ,{field:'pwd', width:80, title: '密码', edit: 'text'}
                 ,{field:'phone', width:80, title: '手机号',edit: 'text'}
                 ,{field:'location', title: '所在地', width: 100, minWidth: 100,edit: 'text'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-                ,{field:'imgUrl', title: '照片'}
+                ,{field:'imgUrl', title: '照片',
+                    templet: function (res) {
+                        return '<img id="userImg" src="' + res.imgUrl + '" onmouseover="showImgTips(\' ' + res.imgUrl + ' \')" onmouseleave="closeImgTips()"/>';
+                    }}
                 ,{fixed: 'right',title:'操作', width:150, align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
             ]]
             ,page: true

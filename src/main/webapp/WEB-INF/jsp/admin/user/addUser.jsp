@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/layui/2.6.4/layui.js" charset="utf-8"></script>
 </head>
 <body>
-<form class="layui-form" action="POST" lay-filter="example" onsubmit="return false">
+<form class="layui-form" action="" method="post" lay-filter="example" onsubmit="return false" enctype="multipart/form-data">
     <div class="layui-form-item">
         <label class="layui-form-label">用户名</label>
         <div class="layui-input-block">
@@ -64,12 +64,12 @@
         </div>
     </div>
 
-    <div class="layui-upload-drag" id="test10">
+    <div class="layui-upload-drag" id="test10" style="margin-bottom: 10px; margin-left: 110px">
         <i class="layui-icon"></i>
         <p>点击上传，或将文件拖拽到此处</p>
         <div class="layui-hide" id="uploadDemoView">
             <hr>
-            <img id="user_imgUrl" src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" alt="上传成功后渲染" style="max-width: 196px">
+            <img id="user_imgUrl" src="" alt="上传成功后渲染" style="max-width: 196px">
         </div>
     </div>
 
@@ -84,19 +84,19 @@
     layui.use(['upload', 'form'], function () {
         var form = layui.form
             , layer = layui.layer
-            , $ = layui.jquery;
+            , $ = layui.jquery
+            ,upload = layui.upload;
 
-        // //拖拽上传
-        //TODO
-        // upload.render({
-        //     elem: '#test10'
-        //     , url: 'https://httpbin.org/post' //改成您自己的上传接口
-        //     , done: function (res) {
-        //         layer.msg('上传成功');
-        //         layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', res.files.file);
-        //         console.log(res)
-        //     }
-        // });
+        //拖拽上传
+        upload.render({
+            elem: '#test10'
+            ,url: '${pageContext.request.contextPath}/user/uploadImg' //必填项
+            ,method: 'post'  //可选项。HTTP类型，默认post
+            , done: function (res) {
+                layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', res.data);
+
+            }
+        });
 
         //监听提交
         form.on('submit(demo1)', function (data) {
@@ -105,7 +105,7 @@
                 return false;
             else {
                 $.ajax({
-                    type: "POST",
+                    type: "post",
                     url: "${pageContext.request.contextPath}/user/addUser",
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
@@ -119,7 +119,6 @@
                         "age": data.field.age
                     }),
                     success: function (res) {
-                        console.log(res);
                         if (res.code == 0) {
                             layer.msg("success", {icon: 1});
                         } else {

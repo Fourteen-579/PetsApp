@@ -7,10 +7,15 @@ import com.fourteen.pojo.User;
 import com.fourteen.service.UserService;
 import com.fourteen.tools.CreateId;
 import com.fourteen.tools.ReturnRequirdResult;
+import com.fourteen.tools.UploadFile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -100,4 +105,17 @@ public class UserServiceImpl implements UserService {
         return ReturnRequirdResult.resultToJson(code);
 
     }
+
+    @Override
+    public String uploadFile(CommonsMultipartFile file, HttpServletRequest request) {
+        String filePath = "";
+        try {
+            filePath = UploadFile.upfile(file, request);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ReturnRequirdResult.resultToJson(filePath);
+    }
+
+
 }
