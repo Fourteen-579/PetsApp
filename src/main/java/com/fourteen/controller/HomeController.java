@@ -9,12 +9,12 @@ public class HomeController {
 
     @RequestMapping("/main")
     public String toMain(){
-        return "main";
+        return "admin/main";
     }
 
     @RequestMapping("/userList")
     public String toUserList(){
-        return "userList";
+        return "admin/user/userList";
     }
 
 }

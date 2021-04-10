@@ -15,7 +15,7 @@ public class Organization {
   private int members;
   private String imgUrl;
   private String describe;
-
+  private String pwd;
 
 
 

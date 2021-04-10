@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Layui</title>
+    <title>UserList</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -22,7 +22,9 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/layui/2.6.4/layui.js" charset="utf-8"></script>
-
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
 <script>
     layui.use('table', function(){
         var table = layui.table,
@@ -36,9 +38,12 @@
                 {field:'id', width:300, title: 'ID', sort: true}
                 ,{field:'name', width:100, title: '用户名',edit: 'text'}
                 ,{field:'age', width:80, title: '年龄', sort: true,edit: 'text'}
-                ,{field:'sex', width:80, title: '性别',edit: 'text'}
+                ,{field:'sex', width:80, title: '性别',edit: 'text',sort: true}
+                ,{field:'pwd', width:80, title: '密码', edit: 'text'}
+                ,{field:'phone', width:80, title: '手机号',edit: 'text'}
                 ,{field:'location', title: '所在地', width: 100, minWidth: 100,edit: 'text'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
                 ,{field:'imgUrl', title: '照片'}
+                ,{fixed: 'right',title:'操作', width:150, align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
             ]]
             ,page: true
         });
@@ -72,6 +77,38 @@
                     layer.msg("error", {icon: 2});
                 }
             })
+        });
+
+        //工具条事件
+        table.on('tool(test3)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+            if(layEvent === 'del'){ //删除
+                layer.confirm('真的删除行么', function(index){
+                    //向服务端发送删除指令
+                    $.ajax({
+                        type: "DELETE",
+                        url: "user/deleteUser",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify({
+                            "id":data.id
+                        }),
+                        success: function (res) {
+                            if (res.code == 0) {
+                                obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+                                layer.close(index);
+                                layer.msg("success", {icon: 1});
+                            } else {
+                                layer.msg("error", {icon: 2});
+                            }
+                        },
+                        error: function () {
+                            layer.msg("error", {icon: 2});
+                        }
+                    })
+                });
+            }
         });
     });
 </script>

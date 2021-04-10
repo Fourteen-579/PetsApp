@@ -59,4 +59,13 @@ public class UserServiceImpl implements UserService {
             code = 404;
         return ReturnRequirdResult.resultToJson(code);
     }
+
+    @Override
+    public String deleteUserById(Map map) {
+        int i = userMapper.deleteUserById((String) map.get("id"));
+        int code = 0;
+        if (i != 1)
+            code = 404;
+        return ReturnRequirdResult.resultToJson(code);
+    }
 }

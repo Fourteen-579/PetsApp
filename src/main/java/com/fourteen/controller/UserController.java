@@ -34,5 +34,11 @@ public class UserController {
         return userService.updateUser(hashMap);
     }
 
+    @DeleteMapping("/deleteUser")
+    public String deleteUser(@RequestBody String data){
+        HashMap<String,String> hashMap = JSON.parseObject(data,HashMap.class);
+
+        return userService.deleteUserById(hashMap);
+    }
 
 }

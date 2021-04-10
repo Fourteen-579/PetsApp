@@ -2,7 +2,6 @@ package com.fourteen.service;
 
 import com.fourteen.pojo.User;
 
-import java.util.List;
 import java.util.Map;
 
 
@@ -14,4 +13,6 @@ public interface UserService {
     String queryByLimit(int page,int limit);
 
     String updateUser(Map map);
+
+    String deleteUserById(Map map);
 }

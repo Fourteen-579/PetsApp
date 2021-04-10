@@ -5,8 +5,8 @@
 
 <mapper namespace="com.fourteen.dao.UserMapper">
     <insert id="addUser" parameterType="user">
-        insert into user(id, name, age, sex, img_url, location) VALUE
-            (#{id}, #{name}, #{age}, #{sex}, #{imgUrl}, #{location});
+        insert into user(id, name, age, sex, img_url, location,pwd,phone) VALUE
+            (#{id}, #{name}, #{age}, #{sex}, #{imgUrl}, #{location},#{pwd},#{phone});
     </insert>
 
     <select id="queryAll" resultType="user">
@@ -40,7 +40,18 @@
             <if test="location!=null">
                 location = #{location},
             </if>
+            <if test="pwd!=null">
+                pwd = #{pwd},
+            </if>
+            <if test="phone!=null">
+                phone = #{phone},
+            </if>
         </set>
         where id= #{id}
     </update>
+
+    <delete id="deleteUserById" parameterType="string">
+        delete from user
+        where id = #{id}
+    </delete>
 </mapper>
