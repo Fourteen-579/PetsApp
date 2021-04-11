@@ -49,13 +49,12 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">Organization</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="${pageContext.request.contextPath}/admin/organList" target="ifr">organList</a></dd>
-                    </dl>
-                    <dl class="layui-nav-child">
-                        <dd><a href="${pageContext.request.contextPath}/admin/addOrgan" target="ifr">addOrgan</a></dd>
+                        <dd><a href="${pageContext.request.contextPath}/admin/organList"  target="ifr">organList</a></dd>
+                        <dd><a href="${pageContext.request.contextPath}/admin/addOrgan"  target="ifr">addOrgan</a></dd>
+
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="javascript:;">menu item 123</a></li>
+                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/admin/appInfo"  target="ifr">AppInfo</a></li>
             </ul>
         </div>
     </div>

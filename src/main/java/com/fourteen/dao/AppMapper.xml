@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fourteen.dao.AppMapper">
+
+    <select id="query" resultType="app">
+        select *
+        from app
+    </select>
+
+    <update id="updateApp" parameterType="map">
+        update app
+        <set>
+            <if test="name!=null">
+                name=#{name},
+            </if>
+            <if test="slogan!=null">
+                slogan=#{slogan},
+            </if>
+            <if test="imgUrl!=null">
+                img_url=#{imgUrl},
+            </if>
+        </set>
+        where id = 0
+    </update>
+
+
+</mapper>

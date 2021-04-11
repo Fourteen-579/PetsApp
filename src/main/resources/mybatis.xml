@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <settings>
-<!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
         <setting name="mapUnderscoreToCamelCase" value="True"/>
     </settings>
     <typeAliases>
@@ -13,6 +13,7 @@
     <mappers>
         <mapper class="com.fourteen.dao.UserMapper"/>
         <mapper class="com.fourteen.dao.OrganizationMapper"/>
+        <mapper class="com.fourteen.dao.AppMapper"/>
     </mappers>
 
 </configuration>
