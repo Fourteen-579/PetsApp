@@ -14,6 +14,10 @@
         <mapper class="com.fourteen.dao.UserMapper"/>
         <mapper class="com.fourteen.dao.OrganizationMapper"/>
         <mapper class="com.fourteen.dao.AppMapper"/>
+        <mapper class="com.fourteen.dao.ArticleMapper"/>
+        <mapper class="com.fourteen.dao.CommentMapper"/>
+        <mapper class="com.fourteen.dao.HelpedMapper"/>
+        <mapper class="com.fourteen.dao.RescueInforMapper"/>
     </mappers>
 
 </configuration>

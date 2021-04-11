@@ -47,4 +47,43 @@ public class AdminHomeController {
         return "admin/app/appInfo";
     }
 
+    @RequestMapping("/addArticle")
+    public String toAddArticle(){
+        return "admin/article/addArticle";
+    }
+
+    @RequestMapping("/articleList")
+    public String toArticleList(){
+        return "admin/article/articleList";
+    }
+
+    @RequestMapping("/addComment")
+    public String toAddComment(){
+        return "admin/comment/addComment";
+    }
+
+    @RequestMapping("/commentList")
+    public String toCommentList(){
+        return "admin/comment/commentList";
+    }
+
+    @RequestMapping("/addHelped")
+    public String toAddHelped(){
+        return "admin/helped/addHelped";
+    }
+
+    @RequestMapping("/helpedList")
+    public String toHelpedList(){
+        return "admin/helped/helpedList";
+    }
+
+    @RequestMapping("/addRescueInfor")
+    public String toAddRescueInfor(){
+        return "admin/rescueInfor/addRescueInfor";
+    }
+
+    @RequestMapping("/rescueInforList")
+    public String toRescueInforList(){
+        return "admin/rescueInfor/rescueInforList";
+    }
 }
