@@ -12,6 +12,7 @@
     </typeAliases>
     <mappers>
         <mapper class="com.fourteen.dao.UserMapper"/>
+        <mapper class="com.fourteen.dao.OrganizationMapper"/>
     </mappers>
 
 </configuration>

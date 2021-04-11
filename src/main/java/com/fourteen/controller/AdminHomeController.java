@@ -23,4 +23,14 @@ public class AdminHomeController {
         return "admin/user/addUser";
     }
 
+    @RequestMapping("/organList")
+    public String toOrganList(){
+        return "admin/organization/organList";
+    }
+
+    @RequestMapping("/addOrgan")
+    public String toAddOrgan(){
+        return "admin/organization/addOrgan";
+    }
+
 }

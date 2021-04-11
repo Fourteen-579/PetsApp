@@ -47,11 +47,12 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">menu group 2</a>
+                    <a href="javascript:;">Organization</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">list 2-1</a></dd>
-                        <dd><a href="javascript:;">list 2-2</a></dd>
-
+                        <dd><a href="${pageContext.request.contextPath}/admin/organList" target="ifr">organList</a></dd>
+                    </dl>
+                    <dl class="layui-nav-child">
+                        <dd><a href="${pageContext.request.contextPath}/admin/addOrgan" target="ifr">addOrgan</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item"><a href="javascript:;">menu item 123</a></li>

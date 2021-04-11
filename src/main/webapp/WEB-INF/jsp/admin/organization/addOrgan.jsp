@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>addUser</title>
+    <title>addOrganization</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -31,16 +31,11 @@
             <input type="password" name="pwd" placeholder="请输入密码" autocomplete="off" class="layui-input" required>
         </div>
     </div>
+
     <div class="layui-form-item">
-        <label class="layui-form-label">手机号</label>
+        <label class="layui-form-label">成员数</label>
         <div class="layui-input-block">
-            <input type="text" name="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">年龄</label>
-        <div class="layui-input-block">
-            <input type="number" name="age" placeholder="请输入年龄" autocomplete="off" class="layui-input">
+            <input type="number" name="members" placeholder="请输入成员数" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
@@ -56,11 +51,11 @@
             </select>
         </div>
     </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">单选框</label>
+
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">组织描述</label>
         <div class="layui-input-block">
-            <input type="radio" name="sex" value="男" title="男" checked="">
-            <input type="radio" name="sex" value="女" title="女">
+            <textarea name="describe" placeholder="请输入组织有关描述" class="layui-textarea"></textarea>
         </div>
     </div>
 
@@ -90,7 +85,7 @@
         //拖拽上传
         upload.render({
             elem: '#test10'
-            ,url: '${pageContext.request.contextPath}/user/uploadImg' //必填项
+            ,url: '${pageContext.request.contextPath}/organ/uploadImg' //必填项
             ,method: 'post'  //可选项。HTTP类型，默认post
             , done: function (res) {
                 layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', res.data);
@@ -106,17 +101,16 @@
             else {
                 $.ajax({
                     type: "post",
-                    url: "${pageContext.request.contextPath}/user/addUser",
+                    url: "${pageContext.request.contextPath}/organ/addOrganization",
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify({
                         "imgUrl":imgUrl,
                         "name": data.field.name,
                         "pwd": data.field.pwd,
-                        "phone": data.field.phone,
+                        "members": data.field.members,
                         "location": data.field.location,
-                        "sex": data.field.sex,
-                        "age": data.field.age
+                        "describe": data.field.describe
                     }),
                     success: function (res) {
                         if (res.code == 0) {
