@@ -12,7 +12,7 @@ import java.util.Date;
 public class Helped {
 
   private String id;
-  private Date time;
+  private String time;
   private String preImgUrl;
   private String aftImgUrl;
   private String helpId;

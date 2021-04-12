@@ -4,4 +4,65 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.fourteen.dao.HelpedMapper">
+    <select id="queryAll" resultType="helped">
+        select *
+        from helped;
+    </select>
+
+    <select id="queryByLimit" resultType="helped">
+        select *
+        from helped
+        limit #{page},#{limit}
+    </select>
+
+    <select id="countHelped" resultType="_int">
+        select count(*)
+        from helped
+    </select>
+
+    <update id="updateHelped" parameterType="map">
+        UPDATE Helped
+        <set>
+            <if test="time!=null">
+                time = #{time},
+            </if>
+            <if test="helpId!=null">
+                helpId = #{helpId},
+            </if>
+            <if test="experience!=null">
+                experience = #{experience},
+            </if>
+            <if test="publisherId!=null">
+                publisherId = #{publisherId},
+            </if>
+            <if test="age!=null">
+                age = #{age},
+            </if>
+            <if test="type!=null">
+                type = #{type},
+            </if>
+            <if test="state!=null">
+                state = #{state},
+            </if>
+            <if test="name!=null">
+                name = #{name},
+            </if>
+            <if test="location!=null">
+                location = #{location},
+            </if>
+        </set>
+        where id= #{id}
+    </update>
+
+    <delete id="deleteHelpedById" parameterType="string">
+        delete from Helped
+        where id = #{id}
+    </delete>
+
+    <insert id="addHelped" parameterType="map">
+        insert into Helped(id, time, pre_img_url, aft_img_url, help_id, experience, publisher_id,
+                           age, type, state, name, location) VALUE
+            (#{id},#{time},#{preImgUrl},#{aftImgUrl},#{helpId},#{experience},#{publisherId},#{age},#{type},#{state},
+             #{name},#{location})
+    </insert>
 </mapper>
