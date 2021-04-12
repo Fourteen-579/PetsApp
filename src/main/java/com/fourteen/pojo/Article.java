@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,6 +15,6 @@ public class Article {
   private String imgUrl;
   private String content;
   private String userId;
-  private Date time;
+  private String time;
 
 }

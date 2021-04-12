@@ -93,7 +93,7 @@
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
             <iframe name="ifr" frameborder="0" id="demoAdmin"
-                    style="width: 100%; height: 1000px; border-radius: 2px;"></iframe>
+                    style="width: 100%; height: 600px; border-radius: 2px;"></iframe>
         </div>
     </div>
 

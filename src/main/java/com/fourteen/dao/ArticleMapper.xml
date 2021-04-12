@@ -4,4 +4,48 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.fourteen.dao.ArticleMapper">
+    <select id="queryAll" resultType="article">
+        select *
+        from Article;
+    </select>
+
+    <select id="queryByLimit" resultType="article">
+        select *
+        from Article
+        limit #{page},#{limit}
+    </select>
+
+    <select id="countArticle" resultType="_int">
+        select count(*)
+        from Article
+    </select>
+
+    <update id="updateArticle" parameterType="map">
+        UPDATE Article
+        <set>
+            <if test="title!=null">
+                title = #{title},
+            </if>
+            <if test="content!=null">
+                content = #{content},
+            </if>
+            <if test="userId!=null">
+                user_id = #{userId},
+            </if>
+            <if test="time!=null">
+                time = #{time},
+            </if>
+        </set>
+        where id= #{id}
+    </update>
+
+    <delete id="deleteArticleById" parameterType="string">
+        delete from Article
+        where id = #{id}
+    </delete>
+
+    <insert id="addArticle" parameterType="map">
+        insert into Article(id, title, img_url, content, user_id, time) VALUE
+            (#{id},#{title},#{imgUrl},#{content},#{userId},NOW())
+    </insert>
 </mapper>
