@@ -1,6 +1,5 @@
 package com.fourteen.service;
 
-import com.fourteen.pojo.Article;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,5 +18,9 @@ public interface ArticleService {
     String addArticle(HashMap<String,String> map);
 
     String uploadFile(CommonsMultipartFile file, HttpServletRequest request);
+
+    int deleteArticleByUserId(String id);
+
+    int deleteArticleById(String id);
     
 }

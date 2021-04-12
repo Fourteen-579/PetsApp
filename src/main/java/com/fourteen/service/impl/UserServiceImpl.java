@@ -1,13 +1,17 @@
 package com.fourteen.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.fourteen.dao.ArticleMapper;
 import com.fourteen.dao.UserMapper;
 import com.fourteen.pojo.ResultReturn;
 import com.fourteen.pojo.User;
+import com.fourteen.service.ArticleService;
+import com.fourteen.service.CommentService;
 import com.fourteen.service.UserService;
 import com.fourteen.tools.CreateId;
 import com.fourteen.tools.ReturnRequirdResult;
 import com.fourteen.tools.UploadFile;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,6 +30,10 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     UserMapper userMapper;
+    @Autowired
+    ArticleService articleService;
+    @Autowired
+    CommentService commentService;
 
     @Override
     public int addUser(User user) {
@@ -69,7 +77,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String deleteUserById(Map map) {
+//        删除用户
         int i = userMapper.deleteUserById((String) map.get("id"));
+//        删除用户对应文章
+        articleService.deleteArticleByUserId((String) map.get("id"));
+//        删除用户对应评论
+        commentService.deleteCommentByUserId((String)map.get("id"));
         int code = 0;
         if (i != 1)
             code = 404;
@@ -77,10 +90,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String addUser(HashMap<String,String> map) {
+    public String addUser(HashMap<String, String> map) {
         map.put("id", CreateId.getUUID());
         String location = "四川";
-        switch (Integer.valueOf(map.get("location"))){
+        switch (Integer.valueOf(map.get("location"))) {
             case -1:
                 location = "隐藏";
                 break;
@@ -97,7 +110,7 @@ public class UserServiceImpl implements UserService {
                 location = "内蒙古";
                 break;
         }
-        map.put("location",location);
+        map.put("location", location);
         int i = userMapper.addUser(map);
         int code = 0;
         if (i != 1)

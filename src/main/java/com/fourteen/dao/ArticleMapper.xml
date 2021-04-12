@@ -15,6 +15,12 @@
         limit #{page},#{limit}
     </select>
 
+    <select id="queryByUserId" resultType="string" parameterType="string">
+        select id
+        from article
+        where user_id = #{id}
+    </select>
+
     <select id="countArticle" resultType="_int">
         select count(*)
         from Article
@@ -40,12 +46,19 @@
     </update>
 
     <delete id="deleteArticleById" parameterType="string">
-        delete from Article
+        delete
+        from Article
         where id = #{id}
+    </delete>
+
+    <delete id="deleteArticleByUserId" parameterType="string">
+        delete
+        from Article
+        where user_id = #{id}
     </delete>
 
     <insert id="addArticle" parameterType="map">
         insert into Article(id, title, img_url, content, user_id, time) VALUE
-            (#{id},#{title},#{imgUrl},#{content},#{userId},NOW())
+            (#{id}, #{title}, #{imgUrl}, #{content}, #{userId}, NOW())
     </insert>
 </mapper>

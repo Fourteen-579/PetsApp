@@ -12,6 +12,8 @@ public interface ArticleMapper {
     //分页查询
     List<Article> queryByLimit(@Param("page") int page, @Param("limit") int limit);
 
+//    根据用户id查询所拥有的文章
+    List<String> queryByUserId(@Param("id")String id);
     //查询总数据量
     int countArticle();
 
@@ -23,4 +25,7 @@ public interface ArticleMapper {
 
     //    增加用户
     int addArticle(Map map);
+
+//    根据用户id删除对应文章
+    int deleteArticleByUserId(@Param("id")String id);
 }
