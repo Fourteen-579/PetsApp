@@ -1,7 +1,6 @@
 package com.fourteen.service;
 
 import com.fourteen.pojo.User;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;

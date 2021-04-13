@@ -87,6 +87,7 @@
         </div>
     </div>
 
+    <hr class="layui-border-green">
 
 
     <div class="layui-upload-drag" id="test10" style="margin-bottom: 10px; margin-left: 110px">
@@ -106,7 +107,7 @@
             <img id="user_imgUrl2" src="" alt="上传成功后渲染" style="max-width: 196px">
         </div>
     </div>
-
+    <hr class="layui-border-green">
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>

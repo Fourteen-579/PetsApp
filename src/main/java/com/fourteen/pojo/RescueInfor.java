@@ -12,11 +12,12 @@ import java.util.Date;
 public class RescueInfor {
 
   private String id;
-  private Date time;
+  private String time;
   private String locale;
   private String state;
   private String label;
   private String describe;
+  private String userId;
 
 
 }

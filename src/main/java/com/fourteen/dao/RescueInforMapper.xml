@@ -4,4 +4,54 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.fourteen.dao.RescueInforMapper">
+    <select id="queryAll" resultType="rescueInfor">
+        select *
+        from rescue_infor;
+    </select>
+
+    <select id="queryByLimit" resultType="rescueInfor">
+        select *
+        from rescue_infor
+        limit #{page},#{limit}
+    </select>
+
+    <select id="countRescueInfor" resultType="_int">
+        select count(*)
+        from rescue_infor
+    </select>
+
+    <update id="UpdateRescueInfor" parameterType="map">
+        UPDATE rescue_infor
+        <set>
+            <if test="time!=null">
+                time = #{time},
+            </if>
+            <if test="locale!=null">
+                locale = #{locale},
+            </if>
+            <if test="state!=null">
+                state = #{state},
+            </if>
+            <if test="label!=null">
+                label = #{label},
+            </if>
+            <if test="describe!=null">
+                describe = #{describe},
+            </if>
+            <if test="userId!=null">
+                userId = #{userId},
+            </if>
+        </set>
+        where id= #{id}
+    </update>
+
+    <delete id="deleteRescueInforById" parameterType="string">
+        delete from rescue_infor
+        where id = #{id}
+    </delete>
+
+    <insert id="addRescueInfor" parameterType="map">
+        insert into rescue_infor(id, time, locale, state, label, `describe`, user_id) VALUE
+            (#{id},NOW(),#{locale},#{state},#{label},#{describe},#{userId})
+    </insert>
 </mapper>
